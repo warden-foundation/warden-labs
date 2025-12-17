@@ -217,12 +217,14 @@ label{
   align-items:center;
   justify-content:center;
   color:#fff;
-  border-radius:9px;
+  border-radius:20%;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
 }
 
 .logo img{
   width:16px;
   height:16px;
   display:block;
-  border-radius:9px;
+  border-radius:20%;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
 }
