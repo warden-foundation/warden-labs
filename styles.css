@@ -217,6 +217,7 @@ label{
   align-items:center;
   justify-content:center;
   color:#fff;
+  border-radius:9px;
 }
 
 .logo img{
