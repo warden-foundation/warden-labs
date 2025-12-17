@@ -6,6 +6,11 @@
   <title>Join the Waitlist — WardenLabs</title>
   <meta name="description" content="Join the WardenLabs waitlist for safer, simpler technology designed for seniors and families." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="assets/icons/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
   <style>
     :root{
       --bg:#0b0f1a;
@@ -186,25 +191,24 @@
       </p>
 
     <form action="https://formspree.io/f/xyzrrgwy" method="POST">
-        <input type="hidden" name="_redirect" value="https://wardenlabs.io/thank-you.html">
-        <div class="formRow">
-            <label>Your email:
-                <input id="email" type="email" name="email" required placeholder="Email address"
-                    aria-label="Email address" />
-            </label>
-            <label>
-                Your message:
-                <textarea name="message">
-                    I'm interested in early access to WardenLabs and would like to receive product updates.
-                </textarea>
-            </label>
-            <button class="btn primary" type="submit">
-                Join the waitlist
-            </button>
-        </div>
-        <div class="note">
-            No spam. No selling data. Unsubscribe anytime.
-        </div>
+      <input type="hidden" name="_redirect" value="https://wardenlabs.io/thank-you.html">
+      <div class="formRow">
+        <label for="email">Your email:</label>
+        <input id="email" type="email" name="email" required placeholder="Email address" aria-label="Email address" />
+    
+        <label for="message">Your message:</label>
+        <textarea id="message" name="message">
+            I'm interested in early access to WardenLabs and would like to receive product updates.
+        </textarea>
+    
+        <button class="btn primary" type="submit">
+          Join the waitlist
+        </button>
+      </div>
+    
+      <div class="note">
+        No spam. No selling data. Unsubscribe anytime.
+      </div>
     </form>
     </div>
 
