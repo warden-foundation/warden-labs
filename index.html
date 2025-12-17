@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WardenLabs — Safer tech for seniors</title>
+  <meta name="description" content="WardenLabs builds safer, simpler tools for seniors—starting with a protected browser and expanding to desktop help and mobile protection with caregiver oversight." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --panel:#0f1526;
+      --panel2:#0c1222;
+      --text:#eef2ff;
+      --muted:#b6bfdc;
+      --border:rgba(255,255,255,.10);
+      --brand:#7c5cff;
+      --brand2:#33e3c2;
+      --shadow: 0 20px 60px rgba(0,0,0,.38);
+      --radius:18px;
+      --max:1180px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 0%, rgba(124,92,255,.25), transparent 60%),
+        radial-gradient(900px 600px at 85% 10%, rgba(51,227,194,.16), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:22px 18px 80px;}
+    .topbar{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px);
+      background:rgba(11,15,26,.65); border-bottom:1px solid rgba(255,255,255,.06);
+      padding:14px 18px; margin:0 -18px; z-index:5;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width:34px; height:34px; border-radius:10px;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow:0 10px 30px rgba(124,92,255,.28);
+    }
+
+    .nav{
+      display:flex; gap:18px; flex-wrap:wrap; align-items:center;
+      color:var(--muted); font-size:14px;
+    }
+    .nav a{ text-decoration:none; opacity:.92 }
+    .nav a:hover{ opacity:1; text-decoration:underline }
+
+    .btn{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      display:inline-flex; align-items:center; gap:8px;
+      cursor:pointer;
+    }
+    .btn:hover{ background:rgba(255,255,255,.10) }
+    .btn.primary{
+      border:none;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#071022;
+      font-weight:900;
+    }
+    .btn.primary:hover{ filter:brightness(1.05) }
+
+    /* Dropdown */
+    .dd{ position:relative; display:inline-flex; align-items:center; }
+    .ddBtn{
+      border:none; background:transparent; color:var(--muted);
+      font:inherit; cursor:pointer; padding:8px 10px; border-radius:10px;
+      display:inline-flex; align-items:center; gap:6px;
+    }
+    .ddBtn:hover{ background:rgba(255,255,255,.06); color:var(--text); }
+    .chev{
+      width:10px; height:10px; display:inline-block;
+      border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+      transform:rotate(45deg); margin-top:-2px; opacity:.9;
+    }
+    .ddMenu{
+      position:absolute; top:44px; left:0;
+      min-width:320px;
+      padding:10px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(15,21,38,.98), rgba(12,18,34,.98));
+      box-shadow:var(--shadow);
+      display:none;
+      z-index:10;
+    }
+    .dd[data-open="true"] .ddMenu{ display:block; }
+    .ddGrid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:8px;
+    }
+    .ddItem{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
+      border-radius:14px;
+      text-decoration:none;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+    }
+    .ddItem:hover{ background:rgba(255,255,255,.07); }
+    .ddIcon{
+      width:28px; height:28px; border-radius:10px;
+      background:rgba(124,92,255,.20);
+      border:1px solid rgba(124,92,255,.35);
+      flex:0 0 auto;
+      position:relative;
+    }
+    .ddIcon.alt{
+      background:rgba(51,227,194,.14);
+      border:1px solid rgba(51,227,194,.30);
+    }
+    .ddTitle{ font-weight:800; color:var(--text); font-size:14px; }
+    .ddDesc{ color:var(--muted); font-size:12.5px; line-height:1.4; margin-top:2px; }
+    .ddFooter{
+      margin-top:10px;
+      padding-top:10px;
+      border-top:1px solid rgba(255,255,255,.08);
+      display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;
+      color:var(--muted); font-size:12.5px;
+    }
+
+    .hero{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:center;
+      padding-top:34px;
+    }
+    @media (max-width: 940px){
+      .hero{ grid-template-columns:1fr; }
+      .topbar{ position:relative; }
+      .ddMenu{ left:auto; right:0; } /* prevent off-screen on small widths */
+    }
+    .eyebrow{ font-size:13px; color:var(--muted); letter-spacing:.14em; text-transform:uppercase; }
+    h1{ margin:10px 0 10px; font-size:48px; line-height:1.02; }
+    @media (max-width: 520px){ h1{ font-size:40px } }
+    .sub{ margin:0; color:var(--muted); font-size:18px; line-height:1.6; max-width:62ch; }
+    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; margin-top:16px; }
+
+    .card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    .formRow{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:10px;
+      margin-top:12px;
+    }
+    @media (max-width: 560px){ .formRow{ grid-template-columns:1fr; } }
+    input{
+      width:100%;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      outline:none;
+    }
+    .note{ font-size:12px; color:var(--muted); margin-top:10px; }
+
+    .section{ margin-top:56px; }
+    .section h2{ margin:0 0 10px; font-size:28px; }
+    .section p{ margin:0 0 16px; color:var(--muted); line-height:1.65; }
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+      align-items:center;
+    }
+    @media (max-width: 940px){ .split{ grid-template-columns:1fr; } }
+
+    .mock{
+      height:320px;
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(800px 240px at 20% 20%, rgba(124,92,255,.35), transparent 55%),
+        radial-gradient(700px 240px at 75% 35%, rgba(51,227,194,.22), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position:relative;
+      overflow:hidden;
+    }
+    .mock::after{
+      content:"";
+      position:absolute; inset:14px;
+      border-radius:14px;
+      border:1px dashed rgba(255,255,255,.16);
+      opacity:.75;
+    }
+
+    .chips{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin-top:12px;
+    }
+    .chip{
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      font-size:13px;
+      text-decoration:none;
+      display:inline-flex; gap:8px; align-items:center;
+    }
+    .chip:hover{ background:rgba(255,255,255,.09) }
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 940px){ .grid3{ grid-template-columns:1fr; } }
+
+    .k{ margin:0; font-size:13px; color:var(--muted); }
+    .v{ margin:6px 0 0; font-weight:900; font-size:18px; }
+    .small{ margin:8px 0 0; color:var(--muted); font-size:14px; line-height:1.55; }
+
+    .footer{
+      margin-top:62px;
+      border-top:1px solid rgba(255,255,255,.08);
+      padding-top:18px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    @media (max-width: 940px){ .footer{ grid-template-columns:1fr; } }
+    .footLinks{ display:flex; gap:14px; flex-wrap:wrap; }
+    .footLinks a{ text-decoration:none; }
+    .footLinks a:hover{ text-decoration:underline; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> WardenLabs</div>
+
+      <div class="nav" aria-label="primary navigation">
+        <!-- Lightweight Solutions dropdown -->
+        <div class="dd" id="solutionsDd" data-open="false">
+          <button class="ddBtn" type="button" aria-haspopup="true" aria-expanded="false">
+            Solutions <span class="chev" aria-hidden="true"></span>
+          </button>
+
+          <div class="ddMenu" role="menu" aria-label="Solutions menu">
+            <div class="ddGrid">
+              <a class="ddItem" role="menuitem" href="solutions/browser.html">
+                <div class="ddIcon" aria-hidden="true"></div>
+                <div>
+                  <div class="ddTitle">Warden Browser</div>
+                  <div class="ddDesc">Safer defaults, scam warnings, simpler browsing, one-click help.</div>
+                </div>
+              </a>
+
+              <a class="ddItem" role="menuitem" href="solutions/helper.html">
+                <div class="ddIcon alt" aria-hidden="true"></div>
+                <div>
+                  <div class="ddTitle">Helper Desktop App</div>
+                  <div class="ddDesc">Guided recovery + support when things go wrong.</div>
+                </div>
+              </a>
+
+              <a class="ddItem" role="menuitem" href="solutions/mobile.html">
+                <div class="ddIcon" aria-hidden="true"></div>
+                <div>
+                  <div class="ddTitle">Mobile Protection</div>
+                  <div class="ddDesc">Extend safety beyond the computer as we roll out phase 3.</div>
+                </div>
+              </a>
+
+              <a class="ddItem" role="menuitem" href="solutions/caregiver.html">
+                <div class="ddIcon alt" aria-hidden="true"></div>
+                <div>
+                  <div class="ddTitle">Caregiver Oversight</div>
+                  <div class="ddDesc">Meaningful alerts with clear boundaries and consent.</div>
+                </div>
+              </a>
+            </div>
+
+            <div class="ddFooter">
+              <span>Prefer a quick overview?</span>
+              <a class="btn" href="#solutions" style="padding:8px 10px;border-radius:10px;">See all</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="#how">How it works</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#about">About</a>
+      </div>
+
+      <a class="btn primary" href="waitlist.html">Join the waitlist</a>
+    </div>
+
+    <div class="hero" id="top">
+      <div>
+        <div class="eyebrow">Simple. Intuitive. Safe.</div>
+        <h1>Safer tech for seniors—built for real life.</h1>
+        <p class="sub">
+          WardenLabs helps older adults avoid scams, confusion, and costly mistakes online.
+          Start with a protected browser, then add instant help and mobile protection with caregiver oversight.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="waitlist.html">Join the waitlist</a>
+          <a class="btn" href="mailto:contact@wardenlabs.io?subject=WardenLabs%20Question">Contact us</a>
+        </div>
+      </div>
+
+      <div class="card" id="waitlist">
+        <h2 style="margin:0 0 8px; font-size:20px;">Join the waitlist</h2>
+        <p style="margin:0; color:var(--muted); line-height:1.55;">
+          Get early access invites and rollout updates. If you’re a caregiver or community org, we’d love to hear from you.
+        </p>
+
+        <form onsubmit="event.preventDefault(); window.location.href='mailto:contact@wardenlabs.io?subject=WardenLabs%20Waitlist&body=Please%20add%20me%20to%20the%20WardenLabs%20waitlist.%0A%0AEmail:%20' + encodeURIComponent(document.getElementById('email').value);">
+          <div class="formRow">
+            <input id="email" type="email" required placeholder="Email address" aria-label="Email address" />
+            <button class="btn primary" type="submit">Join the waitlist</button>
+          </div>
+          <div class="note">No spam. Unsubscribe anytime.</div>
+        </form>
+      </div>
+    </div>
+
+    <div class="section" id="solutions">
+      <div class="split">
+        <div>
+          <h2>One ecosystem, phased rollout</h2>
+          <p>
+            Each solution works on its own, but they’re designed to connect into a single safety experience—
+            for seniors, and for the families supporting them.
+          </p>
+
+          <div class="chips" aria-label="solution quick links">
+            <a class="chip" href="solutions/browser.html">Warden Browser</a>
+            <a class="chip" href="solutions/helper.html">Helper Desktop App</a>
+            <a class="chip" href="solutions/mobile.html">Mobile App</a>
+            <a class="chip" href="solutions/caregiver.html" id="caregiver">Caregiver Oversight</a>
+            <a class="chip"href="privacy.html">Privacy & boundaries</a>
+          </div>
+        </div>
+
+        <div class="mock" aria-label="product visual placeholder"></div>
+      </div>
+    </div>
+
+    <div class="section" id="how">
+      <h2>How it works</h2>
+      <p>A calm, predictable path: protect first, then add help, then extend coverage everywhere.</p>
+
+      <div class="grid3">
+        <div class="card" id="phase1">
+          <p class="k">Phase 1</p>
+          <div class="v">Warden Browser</div>
+          <div class="small">
+            Simplified browsing, scam warnings, safer defaults, and an obvious “Help” button when something feels off.
+          </div>
+        </div>
+
+        <div class="card" id="phase2">
+          <p class="k">Phase 2</p>
+          <div class="v">Helper Desktop App</div>
+          <div class="small">
+            Recovery tools and guided support when mistakes happen—without turning family into full-time IT.
+          </div>
+        </div>
+
+        <div class="card" id="phase3">
+          <p class="k">Phase 3</p>
+          <div class="v">Mobile + caregiver layer</div>
+          <div class="small">
+            Protection beyond the computer, plus caregiver alerts and a clear, respectful oversight experience.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="privacy">
+      <div class="split">
+        <div class="mock" aria-label="privacy visual placeholder"></div>
+        <div>
+          <h2>Safety without taking away independence</h2>
+          <p>
+            WardenLabs is built to preserve dignity: clear boundaries, understandable prompts, and controls the senior can consent to.
+          </p>
+          <div class="ctaRow">
+            <a class="btn primary" href="waitlist.html">Join the waitlist</a>
+            <a class="btn" href="mailto:contact@wardenlabs.io?subject=WardenLabs%20Partnership">Partner with us</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="plans">
+      <h2>Pricing</h2>
+      <p>Start simple. Add support and family features when you need them.</p>
+
+      <div class="grid3">
+        <div class="card">
+          <div class="v">Basic</div>
+          <div class="small">Core browser protection</div>
+          <div style="margin-top:12px; font-weight:900; font-size:22px;">$0</div>
+          <div class="ctaRow" style="margin-top:12px;">
+            <a class="btn" href="waitlist.html">Join the waitlist</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="v">Premium</div>
+          <div class="small">Desktop help + guided recovery</div>
+          <div style="margin-top:12px; font-weight:900; font-size:22px;">TBD</div>
+          <div class="ctaRow" style="margin-top:12px;">
+            <a class="btn primary" href="waitlist.html">Get updates</a>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="v">Family</div>
+          <div class="small">Caregiver oversight + mobile protection</div>
+          <div style="margin-top:12px; font-weight:900; font-size:22px;">TBD</div>
+          <div class="ctaRow" style="margin-top:12px;">
+            <a class="btn primary" href="waitlist.html">Get updates</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="about">
+      <div class="card">
+        <h2 style="margin:0 0 10px;">Start a conversation</h2>
+        <p style="margin:0; color:var(--muted); line-height:1.65;">
+          If you’re building a senior program, supporting a loved one, or want to collaborate on safer-by-default technology,
+          we’d love to connect.
+        </p>
+        <div class="ctaRow" style="margin-top:14px;">
+          <a class="btn primary" href="waitlist.html">Join the waitlist</a>
+          <a class="btn" href="mailto:contact@wardenlabs.io">contact@wardenlabs.io</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div class="logo" aria-hidden="true" style="width:28px;height:28px;border-radius:9px;"></div>
+          <div style="font-weight:800; color:var(--text);">WardenLabs</div>
+        </div>
+        <div style="margin-top:10px;">
+          © <span id="y"></span> WardenLabs • <a href="#top" style="text-decoration:none;">Back to top</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="color:var(--text); font-weight:800; margin-bottom:8px;">Company</div>
+        <div class="footLinks">
+          <a href="#solutions">Solutions</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="waitlist.html">Waitlist</a>
+          <a href="mailto:contact@wardenlabs.io">Contact</a>
+        </div>
+        <div style="margin-top:10px; color:var(--muted);">
+          Privacy and Terms placeholders — add real links when ready.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Dropdown behavior: click to toggle, click outside / Esc to close
+    (function () {
+      var dd = document.getElementById('solutionsDd');
+      var btn = dd.querySelector('.ddBtn');
+
+      function setOpen(isOpen){
+        dd.setAttribute('data-open', isOpen ? 'true' : 'false');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var isOpen = dd.getAttribute('data-open') === 'true';
+        setOpen(!isOpen);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (!dd.contains(e.target)) setOpen(false);
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') setOpen(false);
+      });
+
+      // Close after choosing an item
+      var items = dd.querySelectorAll('.ddItem');
+      for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', function () { setOpen(false); });
+      }
+    })();
+  </script>
+</body>
+</html>

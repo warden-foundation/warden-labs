@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mobile Protection — WardenLabs</title>
+  <meta name="description" content="Mobile protection for seniors with caregiver-friendly safety signals." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{ --bg:#0b0f1a; --text:#eef2ff; --muted:#b6bfdc; --border:rgba(255,255,255,.10); --brand:#7c5cff; --brand2:#33e3c2; --max:980px; --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    body{ margin:0; font-family:var(--sans); color:var(--text); background:radial-gradient(1200px 700px at 15% 0%, rgba(124,92,255,.20), transparent 60%), radial-gradient(900px 600px at 85% 10%, rgba(51,227,194,.12), transparent 55%), var(--bg); }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px 18px 80px; }
+    .top{ display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+    .logo{ width:30px; height:30px; border-radius:9px; background:linear-gradient(135deg,var(--brand),var(--brand2)); }
+    a{ color:inherit; }
+    .btn{ border:1px solid var(--border); background:rgba(255,255,255,.06); padding:10px 14px; border-radius:12px; text-decoration:none; display:inline-flex; gap:8px; align-items:center; }
+    .btn:hover{ background:rgba(255,255,255,.10); }
+    h1{ margin:20px 0 8px; font-size:42px; line-height:1.05; }
+    p, li{ color:var(--muted); line-height:1.7; }
+    .card{ margin-top:18px; border:1px solid var(--border); background:rgba(255,255,255,.05); border-radius:16px; padding:16px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> WardenLabs</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="../index.html">Home</a>
+        <a class="btn" href="../index.html#waitlist">Join the waitlist</a>
+        <a class="btn" href="mailto:contact@wardenlabs.io">Contact</a>
+      </div>
+    </div>
+
+    <h1>Mobile Protection</h1>
+    <p>Extend safety beyond the computer as WardenLabs expands into phase 3.</p>
+
+    <div class="card">
+      <h3 style="margin:0 0 8px;">What we’re aiming for</h3>
+      <ul>
+        <li>Reduce risky taps from texts/emails and suspicious flows.</li>
+        <li>Provide clear “is this safe?” guidance that’s easy to understand.</li>
+        <li>Enable caregiver alerts that are meaningful, not noisy.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

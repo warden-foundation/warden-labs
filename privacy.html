@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy — WardenLabs</title>
+  <meta name="description" content="WardenLabs privacy policy." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{ --bg:#0b0f1a; --text:#eef2ff; --muted:#b6bfdc; --border:rgba(255,255,255,.10); --brand:#7c5cff; --brand2:#33e3c2; --max:900px; --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+    body{ margin:0; font-family:var(--sans); color:var(--text); background:radial-gradient(1200px 700px at 15% 0%, rgba(124,92,255,.20), transparent 60%), radial-gradient(900px 600px at 85% 10%, rgba(51,227,194,.12), transparent 55%), var(--bg); }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:28px 18px 80px; }
+    .top{ display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+    .logo{ width:30px; height:30px; border-radius:9px; background:linear-gradient(135deg,var(--brand),var(--brand2)); }
+    a{ color:inherit; }
+    .btn{ border:1px solid var(--border); background:rgba(255,255,255,.06); padding:10px 14px; border-radius:12px; text-decoration:none; display:inline-flex; gap:8px; align-items:center; }
+    .btn:hover{ background:rgba(255,255,255,.10); }
+    h1{ margin:18px 0 8px; font-size:40px; line-height:1.05; }
+    p, li{ color:var(--muted); line-height:1.7; }
+    .card{ margin-top:18px; border:1px solid var(--border); background:rgba(255,255,255,.05); border-radius:16px; padding:16px; }
+    .small{ font-size:13px; color:var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> WardenLabs</div>
+      <a class="btn" href="index.html">Back to home</a>
+    </div>
+
+    <h1>Privacy Policy</h1>
+    <div class="small">Last updated: <span id="d"></span></div>
+
+    <div class="card">
+      <p>
+        WardenLabs is building safety tools for seniors and caregivers. This page is a practical summary of how we intend to
+        handle data. As the product launches, we’ll refine this policy and keep it up to date.
+      </p>
+
+      <h3 style="margin:14px 0 6px;">What we collect</h3>
+      <ul>
+        <li><b>Waitlist info</b> (like email address) if you choose to join.</li>
+        <li><b>Product telemetry (optional)</b> such as crash reports or basic usage counts to improve reliability.</li>
+        <li><b>Safety events (optional)</b> such as “blocked scam page” counts, designed to avoid collecting sensitive content.</li>
+      </ul>
+
+      <h3 style="margin:14px 0 6px;">What we don’t want to collect</h3>
+      <ul>
+        <li>We aim to minimize collection of browsing content, passwords, or private messages.</li>
+        <li>Caregiver oversight features are intended to focus on safety signals, not surveillance.</li>
+      </ul>
+
+      <h3 style="margin:14px 0 6px;">How we use data</h3>
+      <ul>
+        <li>To deliver product updates you request (like waitlist emails).</li>
+        <li>To maintain and improve security, reliability, and usability.</li>
+        <li>To provide safety notifications where a user has enabled and consented to them.</li>
+      </ul>
+
+      <h3 style="margin:14px 0 6px;">Sharing</h3>
+      <p>
+        We don’t sell personal information. We may use service providers (for example, email delivery) strictly to operate
+        the service, and only with appropriate safeguards.
+      </p>
+
+      <h3 style="margin:14px 0 6px;">Contact</h3>
+      <p>
+        Questions? Email <a href="mailto:contact@wardenlabs.io">contact@wardenlabs.io</a>.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('d').textContent = new Date().toISOString().slice(0,10);
+  </script>
+</body>
+</html>

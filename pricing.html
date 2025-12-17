@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pricing — WardenLabs</title>
+  <meta name="description" content="WardenLabs pricing for safer, simpler technology designed for seniors and families." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root{
+      --bg:#0b0f1a;
+      --text:#eef2ff;
+      --muted:#b6bfdc;
+      --border:rgba(255,255,255,.10);
+      --brand:#7c5cff;
+      --brand2:#33e3c2;
+      --radius:18px;
+      --shadow:0 20px 60px rgba(0,0,0,.38);
+      --max:1100px;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 0%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(900px 600px at 85% 10%, rgba(51,227,194,.14), transparent 55%),
+        var(--bg);
+    }
+    a{ color:inherit; }
+
+    .wrap{ max-width:var(--max); margin:0 auto; padding:24px 18px 90px; }
+
+    .top{
+      display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;
+      padding:14px 0;
+    }
+    .brand{ display:flex; align-items:center; gap:10px; font-weight:800; }
+    .logo{
+      width:32px; height:32px; border-radius:10px;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow:0 10px 30px rgba(124,92,255,.25);
+    }
+
+    .btn{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.06);
+      padding:10px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      cursor:pointer;
+    }
+    .btn:hover{ background:rgba(255,255,255,.10); }
+    .btn.primary{
+      border:none;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#071022;
+      font-weight:900;
+    }
+    .btn.primary:hover{ filter:brightness(1.05); }
+
+    h1{ margin:18px 0 10px; font-size:44px; line-height:1.05; }
+    @media (max-width:520px){ h1{ font-size:38px; } }
+
+    .sub{ margin:0; color:var(--muted); font-size:18px; line-height:1.6; max-width:68ch; }
+
+    .grid{
+      margin-top:20px;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width:980px){ .grid{ grid-template-columns:1fr; } }
+
+    .card{
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      min-height:260px;
+    }
+    .card.featured{
+      border-color:rgba(124,92,255,.45);
+      box-shadow:0 20px 60px rgba(124,92,255,.12), var(--shadow);
+    }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.05);
+      color:var(--muted);
+      font-size:12px;
+      width:max-content;
+    }
+    .plan{ margin:10px 0 6px; font-size:18px; font-weight:900; }
+    .desc{ margin:0; color:var(--muted); line-height:1.6; }
+    .price{ margin-top:12px; font-weight:900; font-size:28px; }
+    .per{ font-weight:600; font-size:14px; color:var(--muted); margin-left:6px; }
+    ul{ margin:14px 0 0; padding-left:18px; color:var(--muted); line-height:1.7; }
+    .spacer{ flex:1; }
+
+    .section{
+      margin-top:44px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:18px;
+    }
+    .section h2{ margin:0 0 8px; font-size:22px; }
+    .section p{ margin:0; color:var(--muted); line-height:1.65; }
+
+    .faq{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+    }
+    @media (max-width:980px){ .faq{ grid-template-columns:1fr; } }
+    .q{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      padding:14px;
+      background:rgba(255,255,255,.03);
+    }
+    .q b{ display:block; margin-bottom:6px; color:var(--text); }
+    .q span{ color:var(--muted); line-height:1.6; }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="top">
+      <div class="brand"><div class="logo" aria-hidden="true"></div> WardenLabs</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="index.html">Home</a>
+        <a class="btn primary" href="waitlist.html">Join the waitlist</a>
+        <a class="btn" href="mailto:contact@wardenlabs.io">Contact</a>
+      </div>
+    </div>
+
+    <h1>Pricing</h1>
+    <p class="sub">
+      Start free with the browser. Add guided help and family oversight as you need it.
+      (Early pricing will be finalized during beta.)
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="tag">Phase 1</div>
+        <div class="plan">Basic</div>
+        <p class="desc">Core browser protection for safer browsing.</p>
+        <div class="price">$0 <span class="per">/ month</span></div>
+        <ul>
+          <li>Safer defaults + scam warnings</li>
+          <li>Simplified browsing experience</li>
+          <li>One-click help path</li>
+        </ul>
+        <div class="spacer"></div>
+        <div style="margin-top:14px;">
+          <a class="btn" href="waitlist.html">Join the waitlist</a>
+        </div>
+      </div>
+
+      <div class="card featured">
+        <div class="tag">Phase 2</div>
+        <div class="plan">Premium</div>
+        <p class="desc">Guided recovery + optional support for the desktop.</p>
+        <div class="price">TBD <span class="per">/ month</span></div>
+        <ul>
+          <li>Recovery tools for “get back to safe”</li>
+          <li>Guided workflows for common issues</li>
+          <li>Optional support add-ons (beta)</li>
+        </ul>
+        <div class="spacer"></div>
+        <div style="margin-top:14px;">
+          <a class="btn primary" href="waitlist.html">Get updates</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="tag">Phase 3</div>
+        <div class="plan">Family</div>
+        <p class="desc">Caregiver oversight + mobile protection layer.</p>
+        <div class="price">TBD <span class="per">/ month</span></div>
+        <ul>
+          <li>Caregiver alerts (consent-first)</li>
+          <li>Mobile protection roadmap</li>
+          <li>Family-friendly visibility (not surveillance)</li>
+        </ul>
+        <div class="spacer"></div>
+        <div style="margin-top:14px;">
+          <a class="btn primary" href="waitlist.html">Get updates</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>For nonprofits, senior centers, and community programs</h2>
+      <p>
+        If you’re supporting seniors at scale, we can discuss pilots, training, and deployment options.
+        Email <a href="mailto:contact@wardenlabs.io">contact@wardenlabs.io</a>.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>FAQ</h2>
+      <div class="faq">
+        <div class="q">
+          <b>When will Premium and Family pricing be available?</b>
+          <span>After the Phase 1 browser beta. Waitlist members will get early details first.</span>
+        </div>
+        <div class="q">
+          <b>Is the free plan really free?</b>
+          <span>Yes—Basic is intended to keep core browser protection accessible.</span>
+        </div>
+        <div class="q">
+          <b>Do caregivers have full access to browsing?</b>
+          <span>No—our intent is safety signals and consent-based oversight, not surveillance.</span>
+        </div>
+        <div class="q">
+          <b>Can I join the waitlist for a pilot?</b>
+          <span>Yes. Join the waitlist and/or email us with “Pilot” in the subject line.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
